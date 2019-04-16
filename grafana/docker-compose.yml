@@ -1,0 +1,6 @@
+grafana:
+  container_name: grafana
+  image: grafana/grafana
+  ports:
+    - 9000:3000
+  restart: always

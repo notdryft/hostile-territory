@@ -23,7 +23,7 @@ trait Configured {
       s"conf/gatling-$environment.conf")
     val config = configFromProperties.withFallback(configFromFile)
 
-    config.as[Settings]("gatling")
+    config.as[Settings]("hostile")
   }
 }
 

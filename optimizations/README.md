@@ -1,30 +1,3 @@
-## Enabling limits
-
-### Debian
-
-/etc/pam.d/common-session:
-
-```
-session    required     pam_limits.so
-```
-
-### RedHat
-
-/etc/pam.d/sshd:
-
-```
-session    required     pam_limits.so
-```
-
-## Upgrading limits for all distributions
-
-/etc/security/limits.conf:
-
-```
-*              soft     nofile          268435456
-*              hard     nofile          268435456
-```
-
 ## Optimizing Kernel
 
 /etc/sysctl.d/99-gatling.conf:
@@ -60,4 +33,41 @@ net.ipv4.tcp_slow_start_after_idle = 0 # Disable idle
 # Adjust TCP keep alive
 
 net.ipv4.tcp_keepalive_intvl = 30 # Interval between probes
+```
+
+Then apply the changes without rebooting:
+
+```
+sudo sysctl -p /etc/sysctl.d/99-gatling.conf
+```
+
+Make sure to do this first.
+There is a bug in old kernels (RHEL based : RHEL/CentOS/Fedora) that locks file if `ulimit` is superior to `fs.nr_open`. Which can make your life harder because you won't be able to sudo anything afterwards.
+See https://unix.stackexchange.com/questions/432057/pam-limits-so-making-problems-for-sudo/444033#444033
+
+## Enabling limits
+
+### Debian
+
+/etc/pam.d/common-session:
+
+```
+session    required     pam_limits.so
+```
+
+### RedHat
+
+/etc/pam.d/sshd:
+
+```
+session    required     pam_limits.so
+```
+
+## Upgrading limits for all distributions
+
+/etc/security/limits.conf:
+
+```
+*              soft     nofile          268435456
+*              hard     nofile          268435456
 ```

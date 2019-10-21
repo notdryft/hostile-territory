@@ -40,7 +40,7 @@ net.ipv4.tcp_slow_start_after_idle = 0 # Disable idle
 net.ipv4.tcp_keepalive_intvl = 30 # Interval between probes
 ```
 
-Then apply the changes without rebooting:
+To apply the changes without rebooting:
 
 ```
 sudo sysctl -p /etc/sysctl.d/99-gatling.conf

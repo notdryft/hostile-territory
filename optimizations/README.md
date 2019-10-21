@@ -1,5 +1,10 @@
 ## Optimizing Kernel
 
+:warning: **Make sure to apply this change first.**
+
+There is a bug in old kernels (RHEL based : RHEL/CentOS/Fedora) that locks file if `ulimit` is superior to `fs.nr_open`, which will make your life harder as you won't be able to sudo anything afterwards.
+See https://unix.stackexchange.com/questions/432057/pam-limits-so-making-problems-for-sudo/444033#444033
+
 /etc/sysctl.d/99-gatling.conf:
 ```
 # Enhance connections limits
@@ -40,11 +45,6 @@ Then apply the changes without rebooting:
 ```
 sudo sysctl -p /etc/sysctl.d/99-gatling.conf
 ```
-
-:warning: **Make sure to apply this change first.**
-
-There is a bug in old kernels (RHEL based : RHEL/CentOS/Fedora) that locks file if `ulimit` is superior to `fs.nr_open` which will make your life harder as you won't be able to sudo anything afterwards.
-See https://unix.stackexchange.com/questions/432057/pam-limits-so-making-problems-for-sudo/444033#444033
 
 ## Enabling limits
 

@@ -1,14 +1,13 @@
 package org.dryft.gatling
 
-import scala.concurrent.duration.FiniteDuration
-
-import com.typesafe.config.ConfigFactory
-import scala.util.Properties._
-
 import io.gatling.core.Predef._
 import io.gatling.http.Predef._
 import io.gatling.http.protocol.HttpProtocolBuilder
 
+import scala.concurrent.duration.FiniteDuration
+import scala.util.Properties._
+
+import com.typesafe.config.ConfigFactory
 import net.ceedubs.ficus.Ficus._
 import net.ceedubs.ficus.readers.ArbitraryTypeReader._
 
@@ -32,8 +31,8 @@ case class Settings(webUrl: String, injection: Injection) {
   def baseHttpProtocol(webUrl: String): HttpProtocolBuilder = {
     val protocol =
       http.baseUrl(webUrl)
-      .disableCaching
-      .disableUrlEncoding
+        .disableCaching
+        .disableUrlEncoding
 
     protocol
   }

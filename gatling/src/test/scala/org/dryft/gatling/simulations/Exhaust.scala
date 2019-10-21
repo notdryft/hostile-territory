@@ -3,9 +3,9 @@ package org.dryft.gatling.simulations
 import io.gatling.core.Predef._
 import io.gatling.http.Predef._
 
-import org.dryft.gatling._
-
 import scala.concurrent.duration._
+
+import org.dryft.gatling._
 
 class Exhaust extends Simulation with Configured {
 

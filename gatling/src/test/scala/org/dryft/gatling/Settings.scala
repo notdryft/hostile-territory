@@ -20,7 +20,7 @@ trait Configured {
     val configFromProperties = ConfigFactory.systemProperties()
     val configFromFile = ConfigFactory.parseResources(
       getClass.getClassLoader,
-      s"conf/gatling-$environment.conf")
+      s"conf/hostile-$environment.conf")
     val config = configFromProperties.withFallback(configFromFile)
 
     config.as[Settings]("hostile")
@@ -31,7 +31,9 @@ case class Settings(webUrl: String, injection: Injection) {
 
   def baseHttpProtocol(webUrl: String): HttpProtocolBuilder = {
     val protocol =
-      http.baseUrl(webUrl).disableCaching.disableUrlEncoding
+      http.baseUrl(webUrl)
+      .disableCaching
+      .disableUrlEncoding
 
     protocol
   }

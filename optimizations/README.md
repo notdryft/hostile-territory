@@ -8,7 +8,7 @@ See https://unix.stackexchange.com/questions/432057/pam-limits-so-making-problem
 
 */etc/sysctl.d/99-gatling.conf:*
 
-```
+```bash
 # Enhance connections limits
 
 # Increase size of file handles and inode cache
@@ -44,7 +44,7 @@ net.ipv4.tcp_keepalive_intvl = 30 # Interval between probes
 
 To apply the changes without rebooting:
 
-```
+```bash
 sudo sysctl -p /etc/sysctl.d/99-gatling.conf
 ```
 
@@ -54,7 +54,7 @@ sudo sysctl -p /etc/sysctl.d/99-gatling.conf
 
 */etc/pam.d/common-session:*
 
-```
+```bash
 session    required     pam_limits.so
 ```
 
@@ -62,7 +62,7 @@ session    required     pam_limits.so
 
 */etc/pam.d/sshd:*
 
-```
+```bash
 session    required     pam_limits.so
 ```
 
@@ -70,7 +70,7 @@ session    required     pam_limits.so
 
 */etc/security/limits.conf:*
 
-```
+```bash
 *              soft     nofile          268435456
 *              hard     nofile          268435456
 ```

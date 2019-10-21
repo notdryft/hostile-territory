@@ -6,7 +6,8 @@ There is a bug in old kernels (RHEL based: RHEL/CentOS/Fedora) that locks files 
 
 See https://unix.stackexchange.com/questions/432057/pam-limits-so-making-problems-for-sudo/444033#444033
 
-/etc/sysctl.d/99-gatling.conf:
+*/etc/sysctl.d/99-gatling.conf:*
+
 ```
 # Enhance connections limits
 
@@ -51,7 +52,7 @@ sudo sysctl -p /etc/sysctl.d/99-gatling.conf
 
 ### Debian
 
-/etc/pam.d/common-session:
+*/etc/pam.d/common-session:*
 
 ```
 session    required     pam_limits.so
@@ -59,7 +60,7 @@ session    required     pam_limits.so
 
 ### RedHat
 
-/etc/pam.d/sshd:
+*/etc/pam.d/sshd:*
 
 ```
 session    required     pam_limits.so
@@ -67,7 +68,7 @@ session    required     pam_limits.so
 
 ## Upgrading limits for all distributions
 
-/etc/security/limits.conf:
+*/etc/security/limits.conf:*
 
 ```
 *              soft     nofile          268435456

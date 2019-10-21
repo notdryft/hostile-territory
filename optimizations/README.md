@@ -41,8 +41,9 @@ Then apply the changes without rebooting:
 sudo sysctl -p /etc/sysctl.d/99-gatling.conf
 ```
 
-Make sure to do this first.
-There is a bug in old kernels (RHEL based : RHEL/CentOS/Fedora) that locks file if `ulimit` is superior to `fs.nr_open`. Which can make your life harder because you won't be able to sudo anything afterwards.
+:warning: **Make sure to apply this change first.**
+
+There is a bug in old kernels (RHEL based : RHEL/CentOS/Fedora) that locks file if `ulimit` is superior to `fs.nr_open` which will make your life harder as you won't be able to sudo anything afterwards.
 See https://unix.stackexchange.com/questions/432057/pam-limits-so-making-problems-for-sudo/444033#444033
 
 ## Enabling limits

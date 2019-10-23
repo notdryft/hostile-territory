@@ -1,6 +1,6 @@
 ## Optimizing Kernel
 
-:warning: **Make sure to apply this change first.**
+:warning: **Make sure to apply these changes first.**
 
 There is a bug in old kernels (RHEL based: RHEL/CentOS/Fedora) that locks files if `ulimit > fs.nr_open`, which will make your life harder as you won't be able to sudo anything afterwards.
 
@@ -12,8 +12,8 @@ See https://unix.stackexchange.com/questions/432057/pam-limits-so-making-problem
 # Enhance connections limits
 
 # Increase size of file handles and inode cache
-fs.nr_open = 268435456
-fs.file-max = 268435456
+fs.nr_open = 2097152
+fs.file-max = 2097152
 
 net.core.netdev_max_backlog = 300000 # Max packets waiting on interface
 net.core.somaxconn = 40000 # Max new connections per port
@@ -68,9 +68,11 @@ session    required     pam_limits.so
 
 ## Upgrading limits for all distributions
 
+:warning: **Make sure to apply these changes last.**
+
 */etc/security/limits.conf:*
 
 ```bash
-*              soft     nofile          268435456
-*              hard     nofile          268435456
+*              soft     nofile          2097152
+*              hard     nofile          2097152
 ```

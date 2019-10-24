@@ -31,7 +31,7 @@ net.ipv4.tcp_window_scaling = 1 # Increase window receive size
 
 net.ipv4.tcp_rmem = 4096 277750 134217728 # Buffers TCP connections (read)
 net.ipv4.tcp_wmem = 4096 277750 134217728 # Buffers TCP connections (write)
-net.ipv4.tcp_mem  = 134217728 134217728 134217728 # Max TCP memory
+net.ipv4.tcp_mem  = 13107200 13107200 13107200 # Max TCP memory
 
 # Minimize slow-start
 
